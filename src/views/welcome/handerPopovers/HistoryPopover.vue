@@ -1,8 +1,9 @@
+<!-- 历史 -->
 <template>
   <div>
-    <el-tabs>
+    <el-tabs tab-position="left">
       <el-tab-pane v-for="(item, index) in data" :key="index" :label="item.label">
-        <el-scrollbar height="400px">
+        <el-scrollbar class="w-250px" height="300px">
           <p v-for="item in 20" :key="item" class="scrollbar-demo-item">{{ item }}</p>
         </el-scrollbar>
       </el-tab-pane>
@@ -15,13 +16,13 @@ import { ref } from 'vue'
 
 const data = ref([
   {
-    label: '默认收藏夹',
+    label: '视频',
   },
   {
-    label: '收藏夹1号',
+    label: '直播',
   },
   {
-    label: '收藏夹2号',
+    label: '专栏',
   },
 ])
 </script>

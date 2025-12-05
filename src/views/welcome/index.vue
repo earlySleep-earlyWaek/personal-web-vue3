@@ -2,12 +2,17 @@
   <el-scrollbar ref="scrollbarRef" @scroll="config.handleScroll" class="w-100vw">
     <div class="w-full h-full flex justify-center flex-wrap">
       <div class="w-full">
+        <!-- 顶部导航栏 -->
         <TopBar />
       </div>
       <div class="w-80% min-w-1300px max-w-1600px h-100% mt-50px">
+        <!-- 中间的频道导航区 -->
         <WelRouteArea class="mb-20px" />
+
+        <!-- 轮播图区域 -->
         <MainTop class="mb-40px" />
 
+        <!-- 主要区域 -->
         <div class="flex flex-wrap gap-10px">
           <div class="card" v-for="item in config.number">
             <VideoCard />
@@ -34,6 +39,7 @@ const config = reactive({
   showTop: false,
   number: 20,
   handleScroll(e) {
+    // 悬浮组件 待完成
     if (e.scrollTop > 200) {
       backTop.value = true
     } else {

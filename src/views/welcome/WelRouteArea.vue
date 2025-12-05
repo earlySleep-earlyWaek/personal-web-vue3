@@ -1,3 +1,5 @@
+<!-- 频道导航区 -->
+
 <template>
   <div class="routeArea">
     <div class="w-10% flex justify-center">

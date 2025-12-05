@@ -1,3 +1,5 @@
+<!-- 搜索栏组件 -->
+
 <template>
   <div class="search relative">
     <el-input

@@ -1,3 +1,6 @@
+<!-- 视频播放卡片 -->
+
+<!-- 关键数据暂时写死,待完成 -->
 <template>
   <div ref="mainDiv" class="main" :style="`height:${width * 0.85}px`">
     <a>

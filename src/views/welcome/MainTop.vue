@@ -1,3 +1,5 @@
+<!-- 轮播图区域 -->
+
 <template>
   <div class="w-full flex">
     <div class="carouselBox">
