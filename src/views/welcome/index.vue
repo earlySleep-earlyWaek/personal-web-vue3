@@ -13,6 +13,7 @@
         <MainTop class="mb-40px" />
 
         <!-- 主要区域 -->
+        <!-- 待绑定数据 -->
         <div class="flex flex-wrap gap-10px">
           <div class="card" v-for="item in config.number">
             <VideoCard />

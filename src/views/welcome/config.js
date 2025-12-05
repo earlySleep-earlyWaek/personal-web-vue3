@@ -4,52 +4,64 @@ export const WelHeader = {
   leftMenu: [
     {
       label: '番剧',
+      popover: false,
       url: 'https://www.bilibili.com/anime/?spm_id_from=333.1007.0.0',
     },
     {
       label: '直播',
+      popover: false,
       url: 'https://live.bilibili.com/?spm_id_from=333.1007.0.0',
     },
     {
       label: '游戏中心',
+      popover: true,
       url: 'https://game.bilibili.com/platform?spm_id_from=333.1007.0.0',
     },
     {
       label: '会员购',
+      popover: false,
       url: 'https://show.bilibili.com/platform/home.html?msource=pc_web&spm_id_from=333.1007.0.0',
     },
     {
       label: '漫画',
+      popover: true,
       url: 'https://manga.bilibili.com/?from=bill_top_mnav&spm_id_from=333.1007.0.0',
     },
     {
       label: '赛事',
+      popover: true,
       url: 'https://www.bilibili.com/match/home/?spm_id_from=333.1007.0.0',
     },
   ],
   rightMenu: [
     {
       label: '大会员',
+      popover: true,
       url: 'https://account.bilibili.com/big?spm_id_from=666.4.0.0',
     },
     {
       label: '消息',
+      popover: true,
       url: 'https://message.bilibili.com/?spm_id_from=666.4.0.0',
     },
     {
       label: '动态',
+      popover: true,
       url: 'https://t.bilibili.com/?spm_id_from=666.4.0.0',
     },
     {
       label: '收藏',
+      popover: true,
       url: 'https://space.bilibili.com/485353535/favlist?spm_id_from=666.4.0.0',
     },
     {
       label: '历史',
+      popover: true,
       url: 'https://www.bilibili.com/history?spm_id_from=666.4.0.0',
     },
     {
       label: '创作中心',
+      popover: false,
       url: 'https://member.bilibili.com/platform/home?spm_id_from=666.4.0.0',
     },
   ],
