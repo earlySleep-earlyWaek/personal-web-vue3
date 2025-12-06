@@ -7,14 +7,14 @@
       <div class="videoCover" @mouseenter="config.videoStart()" @mouseleave="config.videoEnd()">
         <div :style="`height:${imgHeight}px`">
           <el-image
-            class="h-full w-full"
+            class="h-full w-full rounded-8px"
             v-show="!config.videoShow"
             src="/images/test.png"
             fit="cover"
           />
 
           <video
-            class="h-full w-full"
+            class="h-full w-full rounded-8px"
             v-show="config.videoShow"
             src="/videos/test.mp4"
             ref="videoRef"
@@ -118,16 +118,6 @@ onMounted(() => {
 .videoCover {
   position: relative;
   width: 100%;
-  /* 确保容器高度稳定（与内联样式配合），避免切换时跳动 */
-  .media {
-    width: 100%;
-    border-radius: 8px;
-  }
-  .el-image {
-    /* el-image 内部类名可能不同，这里确保圆角 */
-    width: 100%;
-    border-radius: 8px;
-  }
 }
 
 .text {
