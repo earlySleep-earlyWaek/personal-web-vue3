@@ -5,7 +5,7 @@
   <div ref="mainDiv" class="main" :style="`height:${width * 0.85}px`">
     <a>
       <div class="videoCover" @mouseenter="config.videoStart()" @mouseleave="config.videoEnd()">
-        <div :style="`height:${imgHeight}px`">
+        <div class="w-full" :style="`height:${imgHeight}px`">
           <el-image
             class="h-full w-full rounded-8px"
             v-show="!config.videoShow"
@@ -26,28 +26,6 @@
             您的浏览器不支持 video 标签
           </video>
         </div>
-        <!-- <el-image
-          v-show="!config.videoShow"
-          lazy
-          class="media el-image"
-          :style="`height:${imgHeight}px`"
-          fit="cover"
-          src="/images/test.png"
-        />
-
-        <video
-          v-show="config.videoShow"
-          ref="videoRef"
-          src="/videos/test.mp4"
-          class="media"
-          :style="`height:${imgHeight}px;object-fit: fill;`"
-          preload="auto"
-          muted
-          loop
-          :controls="false"
-        >
-          您的浏览器不支持 video 标签
-        </video> -->
       </div>
     </a>
     <div :style="`height:${textHeight}px`">

@@ -3,7 +3,7 @@
 <template>
   <div class="w-full flex">
     <div class="carouselBox">
-      <el-carousel height="415px" trigger="click">
+      <el-carousel height="450px" trigger="click">
         <el-carousel-item class="carousel_item" v-for="item in MainTop.carousel" :key="item">
           <div class="w-full h-full cursor-pointer">
             <div class="h-full">

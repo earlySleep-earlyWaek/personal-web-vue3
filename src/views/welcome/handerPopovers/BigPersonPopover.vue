@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="w-80px">
-        <el-image src="images/image-loading.png" />
+        <el-image src="/images/image-loading.png" />
       </div>
     </div>
     <div class="down">
@@ -42,22 +42,22 @@ import { ref } from 'vue'
 const data = ref([
   {
     label: '热剧抢先看',
-    img: 'images/image-loading.png',
+    img: '/images/image-loading.png',
     url: '#',
   },
   {
     label: '会员免费看',
-    img: 'images/image-loading.png',
+    img: '/images/image-loading.png',
     url: '#',
   },
   {
     label: '4K超清画质',
-    img: 'images/image-loading.png',
+    img: '/images/image-loading.png',
     url: '#',
   },
   {
     label: '会员专属装扮',
-    img: 'images/image-loading.png',
+    img: '/images/image-loading.png',
     url: '#',
   },
 ])
