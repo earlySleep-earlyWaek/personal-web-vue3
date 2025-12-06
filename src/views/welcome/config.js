@@ -1,4 +1,4 @@
-const img = 'images/image-loading.png'
+const img = '/images/image-loading.png'
 
 export const WelHeader = {
   leftMenu: [

@@ -29,7 +29,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 
 app.component('Welcome', Welcome)
-app.component('Map', Map)
-app.component('Config', Config)
+app.component('MapView', Map)
+app.component('ConfigView', Config)
 
 app.mount('#app')

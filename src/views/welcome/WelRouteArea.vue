@@ -5,11 +5,11 @@
     <div class="w-10% flex justify-center">
       <div class="w-70% flex justify-between">
         <div class="flex flex-wrap justify-center items-center w-min h-fll cursor-pointer">
-          <el-image class="w-42px h-42px" src="images/image-loading.png" />
+          <el-image class="w-42px h-42px" src="/images/image-loading.png" />
           <div class="-mt-10px"><strong>动态</strong></div>
         </div>
         <div class="flex flex-wrap justify-center items-center w-min h-fll cursor-pointer">
-          <el-image class="w-42px h-42px" src="images/image-loading.png" />
+          <el-image class="w-42px h-42px" src="/images/image-loading.png" />
           <div class="-mt-10px"><strong>热门</strong></div>
         </div>
       </div>

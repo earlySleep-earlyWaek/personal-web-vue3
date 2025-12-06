@@ -73,6 +73,7 @@ import GameCenterPopover from './handerPopovers/GameCenterPopover.vue'
   box-sizing: border-box;
   padding: 10px;
   width: 100vw;
+  min-width: 1300px;
   background: #f8f8f8;
   z-index: 100;
   position: fixed;

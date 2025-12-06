@@ -12,6 +12,38 @@ const router = createRouter({
       path: '/home',
       name: 'Home',
       component: () => import('@/views/home.vue'),
+      children: [
+        {
+          path: 'welcome',
+          name: 'Welcome',
+          component: () => import('@/views/welcome/index.vue'),
+        },
+        {
+          path: 'map',
+          name: 'Map',
+          component: () => import('@/views/map/index.vue'),
+        },
+        {
+          path: 'echarts',
+          name: 'ECharts',
+          component: () => import('@/views/echarts/index.vue'),
+        },
+        {
+          path: 'fun',
+          name: 'Fun',
+          component: () => import('@/views/fun/index.vue'),
+        },
+        {
+          path: 'test',
+          name: 'Test',
+          component: () => import('@/views/test/index.vue'),
+        },
+        {
+          path: 'config',
+          name: 'Config',
+          component: () => import('@/views/config/index.vue'),
+        },
+      ],
     },
   ],
 })

@@ -22,6 +22,7 @@
         <div class="w-full h-80px flex justify-center mt-20px c-#888">bilibili山寨版</div>
       </div>
     </div>
+    <div></div>
   </el-scrollbar>
 </template>
 
@@ -33,7 +34,6 @@ import MainTop from './MainTop.vue'
 import TopBar from './TopBar.vue'
 import VideoCard from './index/VideoCard.vue'
 
-const scrollbarRef = ref()
 const backTop = ref(false)
 
 const config = reactive({

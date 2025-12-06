@@ -3,7 +3,7 @@
 <template>
   <div class="main">
     <div class="left">
-      <el-image class="w-full h-120px" fit="cover" src="/images/a.png" />
+      <el-image class="w-full !h-120px" fit="cover" src="/images/a.png" />
       <div class="w-full flex gap-10px">
         <div ref="leftBottomItem" v-for="item in 3" class="w-33%">
           <el-image src="/images/a.png" />
@@ -35,7 +35,6 @@ onMounted(async () => {
   await nextTick()
   if (leftBottomItem.value) {
     height.value = leftBottomItem.value.clientWidth + 'px'
-    console.log(height.value)
   }
 })
 </script>

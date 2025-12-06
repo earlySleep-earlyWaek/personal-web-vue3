@@ -13,7 +13,9 @@ export const systemConfig = {
   },
   load() {},
   init() {
-    const config = JSON.parse(localStorage.getItem('config'))
-    this.gis = config['gis']
+    try {
+      const config = JSON.parse(localStorage.getItem('config'))
+      this.gis = config['gis']
+    } catch (e) {}
   },
 }
