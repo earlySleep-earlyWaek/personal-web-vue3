@@ -14,13 +14,13 @@
       </div>
     </div>
     <div class="line"></div>
-    <div class="right">
-      <div class="font-size-18px">新游预告</div>
-      <div class="flex flex-wrap items-center h-full">
-        <a>
-          <div v-for="item in 7" class="w-full">游戏</div>
-        </a>
-      </div>
+    <div ref="rightRef" class="right">
+      <div class="font-size-18px h-30px">新游预告</div>
+      <a>
+        <div v-for="item in 7" class="w-full" :style="`height:${(rightHeight - 30) / 7}px`">
+          游戏
+        </div>
+      </a>
     </div>
   </div>
 </template>
@@ -29,12 +29,18 @@
 import { nextTick, onMounted, ref } from 'vue'
 
 const leftBottomItem = ref(null)
+const rightRef = ref(null)
 const height = ref()
+const rightHeight = ref()
 
 onMounted(async () => {
   await nextTick()
   if (leftBottomItem.value) {
     height.value = leftBottomItem.value.clientWidth + 'px'
+  }
+  if (rightRef.value) {
+    rightHeight.value = rightRef.value.clientHeight
+    console.log(rightHeight.value)
   }
 })
 </script>
@@ -66,6 +72,6 @@ onMounted(async () => {
   box-sizing: border-box;
   padding-left: 10px;
   padding-right: 10px;
-  height: 100%;
+  padding-bottom: 0px;
 }
 </style>
