@@ -43,6 +43,11 @@ const router = createRouter({
               name: 'BigSmall',
               component: () => import('@/views/fun/bigEatSmall/index.vue'),
             },
+            {
+              path: 'clicker',
+              name: 'Clicker',
+              component: () => import('@/views/fun/clicker/index.vue'),
+            },
           ],
         },
         {

@@ -1,6 +1,7 @@
 <template>
   <div class="w-full h-full">
     <FunPlayer />
+    
   </div>
 </template>
 
