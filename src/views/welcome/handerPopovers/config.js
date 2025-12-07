@@ -44,7 +44,7 @@ export const CartoonPopoverData = {
       url: '#',
     },
     {
-      label: '碧蓝之水',
+      label: '碧蓝之湖',
       url: '#',
     },
     {

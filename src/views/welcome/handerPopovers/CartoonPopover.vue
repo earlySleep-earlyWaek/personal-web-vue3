@@ -13,7 +13,7 @@
         <div class="listItem">
           <div
             class="font-600"
-            :style="`color:${index == 0 ? 'red' : index == 1 ? 'green' : 'blue'}`"
+            :style="`color:${index == 0 ? 'red' : index == 1 ? 'green' : index == 2 ? 'blue' : 'black'}`"
           >
             {{ index + 1 }}
           </div>

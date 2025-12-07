@@ -7,6 +7,7 @@
       @focus="Input.handleFocus()"
       @blur="Input.handleBlur()"
       :suffix-icon="Search"
+      placeholder="X^X 仅展示"
     />
     <div
       class="h-200px w-[calc(100%-20px)] bg-white absolute p-10px"
