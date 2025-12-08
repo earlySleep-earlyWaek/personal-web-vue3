@@ -14,3 +14,5 @@ export const FunConfig = {
     },
   ],
 }
+
+export const collisionDet = (item) => {}

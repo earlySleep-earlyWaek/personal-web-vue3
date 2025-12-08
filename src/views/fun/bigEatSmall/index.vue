@@ -1,11 +1,13 @@
 <template>
   <div>
     <div class="topBar">
-      <el-button @click="handleGameStart()">开始</el-button>
+      <el-button :type="config.starting ? 'danger' : 'success'" @click="handleGameStart()">
+        {{ config.starting ? '结束' : '开始' }}
+      </el-button>
     </div>
     <div ref="PlayAreaRef" class="main">
-      <FunPlayer />
-      <FunEnemy v-for="item in enemyList" />
+      <FunPlayer class="z-100" />
+      <FunEnemy class="z-10" :width="item.width" v-for="item in enemyList" />
     </div>
   </div>
 </template>
@@ -13,25 +15,34 @@
 <script setup>
 import FunPlayer from './player/FunPlayer.vue'
 import FunEnemy from './enemy/FunEnemy.vue'
-import { onMounted, ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { funPlayArea } from './config'
 
-const PlayAreaRef = ref()
+const config = reactive({
+  starting: false,
+  handleStatusChange() {
+    this.starting = !this.starting
+  },
+})
 
+const PlayAreaRef = ref()
 const enemyList = ref([])
 
-const enemyCount = 999
 const addEnemy = () => {
-  enemyList.value.push([''])
-
-  if (enemyList.value.length < enemyCount)
-    setTimeout(() => {
-      addEnemy()
-    }, 2000)
+  const enemyData = {
+    width: Math.floor(Math.random() * 200 + 50),
+  }
+  enemyList.value.push(enemyData)
+  if (config.starting) {
+    setTimeout(() => addEnemy(), 2000)
+  }
 }
 
 const handleGameStart = () => {
-  addEnemy()
+  if (!config.starting) {
+    setTimeout(() => addEnemy(), 2000)
+  }
+  config.handleStatusChange()
 }
 
 onMounted(() => {
@@ -49,7 +60,7 @@ onMounted(() => {
 .main {
   width: 100%;
   height: 100%;
-  cursor: pointer;
+  cursor: none;
 }
 .topBar {
   // h-50px bg-#888 flex items-center
@@ -59,6 +70,7 @@ onMounted(() => {
 
   display: flex;
   align-items: center;
+  justify-content: end;
 
   background-color: #00000010;
   border-bottom: 3px #88888850 solid;

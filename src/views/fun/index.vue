@@ -50,6 +50,8 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .scroll {
+  z-index: 99;
+
   width: 250px;
   height: 100%;
   overflow: auto;

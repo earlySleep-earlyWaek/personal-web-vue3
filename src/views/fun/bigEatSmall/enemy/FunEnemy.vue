@@ -1,10 +1,17 @@
 <template>
-  <div ref="enemyRef" class="enemy">敌人</div>
+  <div ref="enemyRef" class="enemy"></div>
 </template>
 
 <script setup>
 import { onMounted, ref } from 'vue'
 import { funPlayArea } from '../config'
+
+const props = defineProps({
+  width: {
+    type: Number,
+    default: 120,
+  },
+})
 
 const width = ref('120px')
 const enemyRef = ref()
@@ -14,7 +21,7 @@ let offsetX = 0
 let speed = 5
 
 const enemyMove = () => {
-  const X = coordinates[0] + offsetX - funPlayArea.left
+  const X = coordinates[0] + offsetX - funPlayArea.left - props.width
 
   if (X < funPlayArea.right) {
     enemyRef.value.style.transform = `translate(${X}px, ${coordinates[1]}px)`
@@ -33,6 +40,7 @@ onMounted(() => {
   if (enemyRef.value) {
     const enemy = enemyRef.value.getBoundingClientRect()
     coordinates = [enemy.left, enemy.top]
+    width.value = props.width + 'px'
     enemyMove()
   }
 })
@@ -44,6 +52,8 @@ onMounted(() => {
 
   width: var(--enemy-width);
   height: calc(var(--enemy-width) * 0.75);
+  border: 1px solid black;
+  border-radius: 4px;
 
   background-color: red;
 
