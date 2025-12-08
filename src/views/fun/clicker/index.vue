@@ -2,8 +2,8 @@
   <div class="main">
     <div class="w-full flex justify-center items-center gap-10px">
       <el-button @click="startGame()">开始</el-button>
-      <div class="bg-green min-w-50px">{{ Math.floor(point) }}</div>
-      <div class="bg-red min-w-50px">速度{{ (3 * ((time + 30) / 60)).toFixed(2) }}</div>
+      <div class="bg-green p-5px min-w-50px">{{ Math.floor(point) }}</div>
+      <div class="bg-red p-5px min-w-50px">速度{{ (3 * ((time + 30) / 60)).toFixed(2) }}s/个</div>
     </div>
     <div ref="gameRef" class="gamePlace">
       <FunCircle
@@ -95,7 +95,7 @@ onMounted(() => {
   width: 100%;
 
   box-sizing: border-box;
-  background-color: #888888;
+  // background-color: #888888;
 
   display: flex;
   justify-content: center;

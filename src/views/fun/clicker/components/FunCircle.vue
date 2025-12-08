@@ -70,7 +70,11 @@ color.value = colorList[Math.floor(Math.random() * colorList.length)]
 
 const handleClick = () => {
   emits('clicked', props.point)
-  ElMessage.success(`获取积分:${props.point.toFixed(2)}`)
+  ElMessage({
+    message: `获取积分:${props.point.toFixed(2)}`,
+    type: 'success',
+    placement: 'top-right',
+  })
   CircleInc.value.remove()
 }
 

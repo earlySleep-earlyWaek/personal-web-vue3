@@ -4,7 +4,7 @@
       <el-tab-pane name="welcome" label="Bili山寨版(开发中)" />
       <el-tab-pane name="map" label="地图(暂停)" />
       <el-tab-pane name="echarts" label="数据统计(预设)" />
-      <el-tab-pane name="fun" label="小创意(预设)" />
+      <el-tab-pane name="fun" label="小创意" />
       <el-tab-pane name="test" label="组件测试" />
       <el-tab-pane name="config" label="设置" />
     </el-tabs>

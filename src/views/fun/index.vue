@@ -1,9 +1,20 @@
 <template>
   <div class="w-100vw h-full flex">
     <el-scrollbar class="scroll">
-      <a class="item" v-for="item in config.scrollList" :href="item.url">{{ item.label }}</a>
+      <!-- <a class="item" v-for="item in config.scrollList" :href="item.url">{{ item.label }}</a> -->
+      <div
+        class="item"
+        v-for="item in config.scrollList"
+        @click="config.handleClick(item)"
+        :style="
+          `background-color:${item.label == config.active ? '#c4c4c4' : 'transparent'};` +
+          `color:${item.label == config.active ? 'black' : '#00000090'};`
+        "
+      >
+        {{ item.label }}
+      </div>
     </el-scrollbar>
-    <div class="flex-1 w-100%">
+    <div class="flex-1 w-100% bg-coolGray">
       <RouterView></RouterView>
     </div>
   </div>
@@ -18,11 +29,17 @@ const router = useRouter()
 
 const config = reactive({
   scrollList: [],
+  active: '',
   init() {
     FunConfig.list.forEach((e) => {
       const temp = e
       this.scrollList.push(temp)
     })
+    this.active = this.scrollList[0].label
+  },
+  handleClick(item) {
+    this.active = item.label
+    router.push(item.url)
   },
 })
 
@@ -38,7 +55,7 @@ onMounted(() => {
   overflow: auto;
   background-color: #ececec;
 
-  border-right: 2px solid #88888850;
+  border-right: 2px solid #c4c4c4;
 
   .item {
     box-sizing: border-box;
@@ -58,8 +75,7 @@ onMounted(() => {
     transition: 0.1s;
 
     &:hover {
-      background-color: #88888850;
-      color: black;
+      background-color: #88888850 !important;
     }
   }
 }

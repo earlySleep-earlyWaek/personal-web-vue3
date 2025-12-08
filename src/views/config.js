@@ -10,3 +10,7 @@ export const Tools = {
     return `${year}年${month}月${day}日${hours}时${minutes}分${seconds}秒`
   },
 }
+
+export const homeConfig = {
+  
+}
