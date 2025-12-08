@@ -8,5 +8,9 @@ export const FunConfig = {
       label: '大组件吃小组件',
       url: 'big-small',
     },
+    {
+      label: '组件大战DIV',
+      url: '#',
+    },
   ],
 }
