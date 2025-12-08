@@ -15,7 +15,7 @@ const player = ref()
 
 const handleMouseMove = (e) => {
   const el = player.value
-  
+
   if (true) {
     const X = e.pageX - playAreaData.clientRect.x - el.clientWidth / 2
     const Y = e.pageY - playAreaData.clientRect.y - el.clientHeight / 2
@@ -27,8 +27,6 @@ const handleMouseMove = (e) => {
 onMounted(() => {
   if (playArea.value) {
     playAreaData.clientRect = playArea.value.getBoundingClientRect()
-    console.log(playAreaData.clientRect)
-
     window.addEventListener('mousemove', handleMouseMove)
   }
 })
@@ -40,19 +38,18 @@ onMounted(() => {
   height: 100%;
   cursor: pointer;
 
-  position: relative;
+  position: fixed;
+}
+.player {
+  --width-: 120px;
+  width: var(--width-);
+  height: calc(var(--width-) * (9 / 16));
 
-  .player {
-    --width-: 120px;
-    width: var(--width-);
-    height: calc(var(--width-) * (9 / 16));
+  background-color: green;
+  color: white;
 
-    background-color: green;
-    color: white;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
