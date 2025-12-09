@@ -35,7 +35,12 @@
       </div>
       <div class="w-33% flex justify-end">
         <el-button @click="config.dia = true">规则</el-button>
-        <el-button type="success" :disabled="starting" @click="startGame()">开始</el-button>
+        <el-button
+          :type="starting ? 'danger' : 'success'"
+          @click="starting ? endGame() : startGame()"
+        >
+          {{ starting ? '停止' : '开始' }}
+        </el-button>
       </div>
     </div>
 
@@ -59,7 +64,7 @@
   </el-dialog>
 </template>
 <script setup>
-import { onMounted, reactive, ref } from 'vue'
+import { onMounted, reactive, ref, watch } from 'vue'
 import FunCircle from './components/FunCircle.vue'
 
 const config = reactive({
@@ -119,15 +124,17 @@ const addCircle = () => {
 }
 
 const startGame = () => {
-  if (!starting.value) {
-    starting.value = true
-    speed.value = config.speed
-    radious = 100
-    time.value = config.time
-    point.value = 0
-    timer()
-    addCircle()
-  }
+  starting.value = true
+  speed.value = config.speed
+  radious = 100
+  time.value = config.time
+  point.value = 0
+  timer()
+  addCircle()
+}
+
+const endGame = () => {
+  time.value = 1
 }
 
 const handleClick = (p) => {
@@ -140,26 +147,39 @@ onMounted(() => {
 
   time.value = config.time
   speed.value = config.speed
+  gameRef.value.style.transition = 'box-shadow  0.1s'
+})
+
+watch([speed, starting], () => {
+  if (starting.value) {
+    if (speed.value > 900) {
+      gameRef.value.style.boxShadow = 'inset 0 0 50px rgba(0, 255, 0, 0.5)'
+    } else if (speed.value > 750) {
+      gameRef.value.style.boxShadow = 'inset 0 0 50px rgba(255, 255, 0, 0.5)'
+    } else if (speed.value == 500) {
+      gameRef.value.style.boxShadow = 'inset 0 0 50px rgba(255, 0, 0, 0.5)'
+    }
+  } else {
+    gameRef.value.style.boxShadow = 'inset 0 0 50px rgba(0, 0, 0, 0.5)'
+  }
 })
 </script>
 
 <style lang="scss" scoped>
 .main {
-  height: calc(100% - 40px);
   width: 100%;
+  height: calc(100% - 40px);
 
   box-sizing: border-box;
-  // background-color: #888888;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
 
   .gamePlace {
     position: relative;
-
-    height: calc(100%);
-    width: calc(100%);
+    flex: 1;
   }
 }
 

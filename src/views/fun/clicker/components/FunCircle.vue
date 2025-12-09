@@ -79,7 +79,7 @@ const handleClick = () => {
   ElMessage({
     message: `获取积分:${props.point.toFixed(2)}`,
     type: 'success',
-    placement: 'top-right',
+    placement: 'bottom-left',
   })
   CircleInc.value.remove()
 }
