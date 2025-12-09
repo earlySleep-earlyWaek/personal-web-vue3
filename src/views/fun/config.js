@@ -5,7 +5,7 @@ export const FunConfig = {
       url: 'clicker',
     },
     {
-      label: '大组件吃小组件',
+      label: 'DIV吃div',
       url: 'big-small',
     },
     {
@@ -17,6 +17,14 @@ export const FunConfig = {
       url: '#',
     },
   ],
+}
+
+export const funPlayArea = {
+  // 这个是游戏区域的一些信息
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
 }
 
 export const collisionDet = (item) => {}

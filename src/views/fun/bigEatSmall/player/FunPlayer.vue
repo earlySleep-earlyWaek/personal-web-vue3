@@ -1,11 +1,21 @@
 <template>
   <div ref="playArea" class="main">
-    <div ref="player" class="player">玩家</div>
+    <div ref="player" class="player">
+      {{ Math.floor((props.width * (props.width * 0.75)) / 20) }}
+    </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted, reactive, ref } from 'vue'
+import { onMounted, onUnmounted, reactive, ref } from 'vue'
+
+const props = defineProps({
+  width: {
+    type: Number,
+    default: 50,
+  },
+})
+const width = props.width + 'px'
 
 const playArea = ref()
 const playAreaData = reactive({
@@ -30,6 +40,10 @@ onMounted(() => {
     window.addEventListener('mousemove', handleMouseMove)
   }
 })
+
+onUnmounted(() => {
+  window.removeEventListener('mousemove', handleMouseMove)
+})
 </script>
 
 <style lang="scss" scoped>
@@ -41,9 +55,9 @@ onMounted(() => {
   position: fixed;
 }
 .player {
-  --width-: 120px;
+  --width-: v-bind(width);
   width: var(--width-);
-  height: calc(var(--width-) * (9 / 16));
+  height: calc(var(--width-) * 0.75);
 
   background-color: green;
   color: white;

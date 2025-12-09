@@ -24,7 +24,7 @@ import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 
 const config = reactive({
-  activeTab: 'bilibili',
+  activeTab: 'welcome',
   go() {
     switch (this.activeTab) {
       case 'welcome': {

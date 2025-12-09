@@ -4,7 +4,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
-import { funPlayArea } from '../config'
+import { funPlayArea } from '../../config'
 
 const props = defineProps({
   width: {

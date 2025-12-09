@@ -1,9 +1,15 @@
 <template>
   <div>
     <div class="topBar">
-      <el-button :type="config.starting ? 'danger' : 'success'" @click="handleGameStart()">
-        {{ config.starting ? '结束' : '开始' }}
-      </el-button>
+      <div>
+        <strong>分数:{{ 1111111 }}</strong>
+      </div>
+      <div>
+        <el-button type="default"> 规则 </el-button>
+        <el-button :type="config.starting ? 'danger' : 'success'" @click="handleGameStart()">
+          {{ config.starting ? '结束' : '开始' }}
+        </el-button>
+      </div>
     </div>
     <div ref="PlayAreaRef" class="main">
       <FunPlayer class="z-100" />
@@ -15,8 +21,8 @@
 <script setup>
 import FunPlayer from './player/FunPlayer.vue'
 import FunEnemy from './enemy/FunEnemy.vue'
-import { onMounted, reactive, ref } from 'vue'
-import { funPlayArea } from './config'
+import { onMounted, onUnmounted, reactive, ref } from 'vue'
+import { funPlayArea } from '../config'
 
 const config = reactive({
   starting: false,
@@ -54,6 +60,10 @@ onMounted(() => {
     funPlayArea.bottom = ClientRect.bottom
   }
 })
+
+onUnmounted(()=>{
+  
+})
 </script>
 
 <style lang="scss" scoped>
@@ -70,7 +80,7 @@ onMounted(() => {
 
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
 
   background-color: #00000010;
   border-bottom: 3px #88888850 solid;
