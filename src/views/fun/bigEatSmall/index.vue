@@ -1,10 +1,11 @@
 <template>
   <div>
     <div class="topBar">
-      <div>
-        <strong>分数:{{ 1111111 }}</strong>
+      <div class="w-33% flex"></div>
+      <div class="w-33% flex justify-center">
+        <el-tag size="large" type="success">分数:{{ 1111111 }}</el-tag>
       </div>
-      <div>
+      <div class="w-33% flex justify-end">
         <el-button type="default"> 规则 </el-button>
         <el-button :type="config.starting ? 'danger' : 'success'" @click="handleGameStart()">
           {{ config.starting ? '结束' : '开始' }}
@@ -61,9 +62,7 @@ onMounted(() => {
   }
 })
 
-onUnmounted(()=>{
-  
-})
+onUnmounted(() => {})
 </script>
 
 <style lang="scss" scoped>
@@ -73,16 +72,16 @@ onUnmounted(()=>{
   cursor: none;
 }
 .topBar {
-  // h-50px bg-#888 flex items-center
   box-sizing: border-box;
-  height: 50px;
   padding: 5px;
 
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
 
   background-color: #00000010;
-  border-bottom: 3px #88888850 solid;
+  border-bottom: 2px #888888 solid;
 }
 </style>

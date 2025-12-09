@@ -30,6 +30,10 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
+  speed: {
+    type: Number,
+    default: 1000,
+  },
 })
 
 const emits = defineEmits(['clicked'])
@@ -37,6 +41,7 @@ const x = ref()
 const y = ref()
 const radious = ref()
 const actTime = ref()
+const speed = ref()
 
 const colorList = [
   'red',
@@ -64,8 +69,9 @@ const color = ref('white')
 
 x.value = props.x + 'px'
 y.value = props.y + 'px'
+speed.value = props.speed
 radious.value = props.radious + 'px'
-actTime.value = 3 * ((props.time + 30) / 60) + 's'
+actTime.value = speed.value - 10 + 'ms'
 color.value = colorList[Math.floor(Math.random() * colorList.length)]
 
 const handleClick = () => {
@@ -79,17 +85,9 @@ const handleClick = () => {
 }
 
 onMounted(() => {
-  console.log({
-    x: x.value,
-    y: y.value,
-    直径: radious.value,
-  })
-  setTimeout(
-    () => {
-      CircleInc.value.remove()
-    },
-    3000 * ((props.time + 30) / 60),
-  )
+  setTimeout(() => {
+    CircleInc.value.remove()
+  }, speed.value)
 })
 </script>
 
