@@ -12,7 +12,7 @@
  描述:进行一些娱乐项目开发,目前已经开发的娱乐项目包括'点点点!',正在开发'大组件吃小组件',后续准备开发'组件大战DIV','打DIV'.  
   
  💚点点点💚  
- <img width="1605" height="926" alt="42d4be5b-839f-4097-a671-c4a81434185f" src="https://github.com/user-attachments/assets/d435d6bd-883c-41f6-bbf4-6dada0aba6c5" />  
+ <img width="1608" height="923" alt="ad04448c-cdfe-46a6-848c-dd3077277bfd" src="https://github.com/user-attachments/assets/02fd6448-21b1-4271-9efb-8c384f38b356" />  
 娱乐项目介绍:  
 点击开始按钮后,方框区会随机位置出现随机大小的〇,〇的大小和消亡时间会随着时间发生改变.  
 有独特的评分机制,不同〇有不同的积分,整体上,越往后的〇积分越高.
