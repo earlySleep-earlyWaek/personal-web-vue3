@@ -13,13 +13,19 @@ const enemyRef = ref()
 const props = defineProps({
   position: {
     type: Array,
-    default: [300, 500],
+    default: [1000, 800],
   },
   width: {
     type: Number,
     default: 120,
   },
+  direction: {
+    type: String,
+    default: '左',
+  },
 })
+
+const emits = defineEmits(['ated', 'gameover'])
 
 const startX = ref()
 const startY = ref()
@@ -48,31 +54,50 @@ const enemyMove = () => {
 
   if (collisionDet(enemyDet)) {
     if (size.value < bsPlayer.size) {
-      console.log('敌人', enemyDet)
-      console.log('玩家', bsPlayer)
-
       enemyRef.value.remove()
       enemyRef.value = null
+      emits('ated')
       return
     } else {
-      
+      emits('gameover')
+      return
     }
   }
 
-  if (X < funPlayArea.right + 150) {
-    enemyRef.value.style.left = `${X}px`
+  if (props.direction == '右') {
+    if (X < funPlayArea.right + 150) {
+      enemyRef.value.style.left = `${X}px`
 
-    offsetX += speed
-    setTimeout(() => {
-      enemyMove()
-    }, 20)
+      offsetX += speed
+      setTimeout(() => {
+        enemyMove()
+      }, 20)
+    } else {
+      console.log('销毁')
+      enemyRef.value.remove()
+    }
   } else {
-    console.log('销毁')
-    enemyRef.value.remove()
+    if (X > funPlayArea.left - 150) {
+      enemyRef.value.style.left = `${X}px`
+
+      offsetX += speed
+      setTimeout(() => {
+        enemyMove()
+      }, 20)
+    } else {
+      console.log('销毁')
+      enemyRef.value.remove()
+    }
   }
 }
 
 onMounted(() => {
+  if (props.direction == '右') {
+    speed = 5
+  } else {
+    speed = -speed
+  }
+
   if (enemyRef.value) {
     const enemy = enemyRef.value.getBoundingClientRect()
     coordinates = [enemy.left, enemy.top]

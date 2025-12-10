@@ -16,9 +16,8 @@ const props = defineProps({
     default: 50,
   },
 })
+
 const width = props.width + 'px'
-let helfWidth = props.width / 2
-let helfHeight = props.width * 0.375
 const size = ref()
 
 const playArea = ref()
@@ -47,11 +46,11 @@ const handleMouseMove = (e) => {
   el.style.transform = `translate(${moveX}px, ${moveY}px)`
 }
 
-window.addEventListener('click', (e) => {
-  console.log([e.pageX, e.pageY])
-  console.log(bsPlayer.topLeft)
-  console.log(JSON.parse(JSON.stringify(bsPlayer)))
-})
+// window.addEventListener('click', (e) => {
+//   console.log([e.pageX, e.pageY])
+//   console.log(bsPlayer.topLeft)
+//   console.log(JSON.parse(JSON.stringify(bsPlayer)))
+// })
 
 onMounted(() => {
   if (playArea.value) {
@@ -72,7 +71,6 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   cursor: pointer;
-
   position: fixed;
 }
 .player {
