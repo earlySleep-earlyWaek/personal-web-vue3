@@ -82,11 +82,13 @@ const handleClick = () => {
     placement: 'bottom-left',
   })
   CircleInc.value.remove()
+  CircleInc.value = null
 }
 
 onMounted(() => {
   setTimeout(() => {
     CircleInc.value.remove()
+    CircleInc.value = null
   }, speed.value)
 })
 </script>
@@ -107,7 +109,7 @@ onMounted(() => {
   background-color: black;
   transition: 0.15s;
 
-  animation: fade v-bind(actTime) linear infinite;
+  // animation: fade v-bind(actTime) linear infinite;
 
   &:hover {
     filter: invert(1);
