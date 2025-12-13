@@ -17,14 +17,13 @@
 每个圆圈依据圆圈的大小,生命时长有对应的积分,整体上越往后积分越高.  
 注:添加了圆圈大小以及生成速度的保底数值.  
 <img width="1608" height="923" alt="ad04448c-cdfe-46a6-848c-dd3077277bfd" src="https://github.com/user-attachments/assets/02fd6448-21b1-4271-9efb-8c384f38b356" />  
-
+  
 ### Div杀手  
 'Div杀手'介绍  
-吃掉比自己数字小的div  
-<img width="1602" height="925" alt="1dfc7e12e364bd48c5999aee8c1a8b64" src="https://github.com/user-attachments/assets/276d3930-854e-4b6b-9c0b-ef4d6c2c879d" />
-
-
-
+使用鼠标操控自己的div，除了躲避大家伙的吞噬,记得消灭那些小家伙。  
+有一个永远比你强大的boss，记得远离它。  
+<img width="1598" height="924" alt="af1a29d107c48e3099eac6cf9dc9ba62" src="https://github.com/user-attachments/assets/de157987-39bb-41eb-8edb-5a8e635cdcfa" />  
+  
 # Bili山寨版  
 介绍:尝试对哔哩哔哩进行复刻,目前计划复刻首页以及视频详情页  
 ✅首页前端基础框架  
