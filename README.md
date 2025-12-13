@@ -21,7 +21,8 @@
 ### Div杀手  
 'Div杀手'介绍  
 吃掉比自己数字小的div  
-<img width="1604" height="923" alt="63ff34ac-ff4b-4131-893f-f0445fada9b1" src="https://github.com/user-attachments/assets/73ed1920-1376-4abc-a020-769565aea569" />  
+<img width="1602" height="925" alt="1dfc7e12e364bd48c5999aee8c1a8b64" src="https://github.com/user-attachments/assets/276d3930-854e-4b6b-9c0b-ef4d6c2c879d" />
+
 
 
 # Bili山寨版  
