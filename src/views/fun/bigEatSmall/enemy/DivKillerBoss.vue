@@ -1,9 +1,9 @@
 <template>
-  <div ref="BossRef" class="boss" :style="config.bossStyle">{{ config.width }}</div>
+  <div ref="BossRef" class="boss" :style="config.bossStyle">{{ Math.floor(config.width) }}</div>
 </template>
 
 <script setup>
-import { onMounted, reactive, ref } from 'vue'
+import { onMounted, reactive, ref, watch } from 'vue'
 import { DivKiller, DivKillerCollisionDet, DivKillerPlayer, funPlayArea } from '../config'
 
 const BossRef = ref(null)
@@ -15,7 +15,6 @@ const config = reactive({
 
   init() {
     this.width = Number(DivKillerPlayer.size) * 1.1
-
     this.bossStyle = `width:${this.width}px;height:${this.width * 0.75}px`
   },
   move() {
@@ -69,6 +68,7 @@ const config = reactive({
 
 const emits = defineEmits(['gameover'])
 const startMove = () => {
+  config.init()
   BossRef.value.style.top = funPlayArea.top + 'px'
   BossRef.value.style.left = funPlayArea.left + 'px'
   config.move()
