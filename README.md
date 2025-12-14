@@ -27,5 +27,5 @@
 介绍:尝试对哔哩哔哩进行复刻,目前计划复刻首页以及视频详情页  
 ✅首页前端基础框架  
 🕒视频详情页  
-<img width="1856" height="925" alt="9ecd9bd6-7db6-4d96-ab46-4f22736ff77f" src="https://github.com/user-attachments/assets/6e3103ac-0110-4d6b-8ffa-01e9f4d8a064" />  
+<img width="1854" height="925" alt="a368cc85-efc2-4434-a7f7-5b85b48dfee6" src="https://github.com/user-attachments/assets/697d1674-45a7-49f9-945d-03f9ed3fcb4d" />
 
