@@ -1,5 +1,9 @@
 const img = '/images/image-loading.png'
 
+export const BiliConfig = {
+  unityWidth: 0,
+}
+
 export const WelHeader = {
   leftMenu: [
     {

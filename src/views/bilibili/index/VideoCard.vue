@@ -2,7 +2,7 @@
 
 <!-- 关键数据暂时写死,待完成 -->
 <template>
-  <div ref="mainDiv" class="main" :style="`height:${width * 0.85}px`">
+  <!-- <div ref="mainDiv" class="main" :style="`height:${width * 0.85}px`">
     <a>
       <div class="videoCover" @mouseenter="config.videoStart()" @mouseleave="config.videoEnd()">
         <div class="w-full" :style="`height:${imgHeight}px`">
@@ -39,19 +39,47 @@
         </div>
       </a>
     </div>
+  </div> -->
+
+  <div ref="mainDiv" class="videoCard">
+    <div class="w-full h-full">
+      <a @mouseenter="config.videoStart()" @mouseleave="config.videoEnd()">
+        <el-image
+          class="h-70% w-100% rounded-8px"
+          v-show="!config.videoShow"
+          src="/images/test.png"
+          fit="cover"
+        />
+
+        <video
+          class="h-70% w-100% rounded-8px object-fill"
+          v-show="config.videoShow"
+          src="/videos/test.mp4"
+          ref="videoRef"
+          preload="auto"
+          muted
+          loop
+          :controls="false"
+        >
+          您的浏览器不支持 video 标签
+        </video>
+      </a>
+
+      <a>
+        <div class="text">雾子solo雾子</div>
+        <div class="font-size-13px c-#888 flex text">
+          <div>作者</div>
+          <div>2025年12月5日</div>
+        </div>
+      </a>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { nextTick, onMounted, reactive, ref } from 'vue'
+import { nextTick, reactive, ref } from 'vue'
 
-const mainDiv = ref(null)
-const width = ref(0)
-const imgHeight = ref()
-const textHeight = ref()
 const videoRef = ref(null)
-
-const video = videoRef
 
 const config = reactive({
   videoShow: false,
@@ -75,33 +103,14 @@ const config = reactive({
     }
   },
 })
-
-onMounted(() => {
-  if (mainDiv.value) {
-    width.value = mainDiv.value.clientWidth
-    imgHeight.value = mainDiv.value.clientWidth * (9 / 16)
-    textHeight.value = mainDiv.value.clientWidth * (6 / 16)
-  }
-})
 </script>
 
 <style lang="scss" scoped>
-.main {
-  width: 100%;
+.videoCard {
   height: 100%;
-  transform: scale(1);
-  box-sizing: border-box;
-}
-
-.videoCover {
-  position: relative;
   width: 100%;
-}
 
-.text {
-  transition: 0.1s;
-  &:hover {
-    color: rgb(0, 153, 255);
-  }
+  box-sizing: border-box;
+  padding: 5px;
 }
 </style>
