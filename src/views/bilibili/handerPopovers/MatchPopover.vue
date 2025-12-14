@@ -53,7 +53,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import { MatchPopoverData } from './config'
 
 const hotMatch = ref([])
@@ -80,10 +80,7 @@ const changeHover = (type, index) => {
     advance.value[index].hover = !advance.value[index].hover
   }
 }
-
-onMounted(() => {
-  init()
-})
+init()
 </script>
 
 <style lang="scss" scoped>

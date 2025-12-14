@@ -2,45 +2,6 @@
 
 <!-- 关键数据暂时写死,待完成 -->
 <template>
-  <!-- <div ref="mainDiv" class="main" :style="`height:${width * 0.85}px`">
-    <a>
-      <div class="videoCover" @mouseenter="config.videoStart()" @mouseleave="config.videoEnd()">
-        <div class="w-full" :style="`height:${imgHeight}px`">
-          <el-image
-            class="h-full w-full rounded-8px"
-            v-show="!config.videoShow"
-            src="/images/test.png"
-            fit="cover"
-          />
-
-          <video
-            class="h-full w-full rounded-8px"
-            v-show="config.videoShow"
-            src="/videos/test.mp4"
-            ref="videoRef"
-            preload="auto"
-            muted
-            loop
-            :controls="false"
-          >
-            您的浏览器不支持 video 标签
-          </video>
-        </div>
-      </div>
-    </a>
-    <div :style="`height:${textHeight}px`">
-      <a>
-        <div class="text p-5px w-fit">雾子solo雾子</div>
-      </a>
-      <a>
-        <div class="text font-size-13px c-#888 flex p-5px">
-          <div>作者</div>
-          <div>2025年12月5日</div>
-        </div>
-      </a>
-    </div>
-  </div> -->
-
   <div ref="mainDiv" class="videoCard">
     <div class="w-full h-full">
       <a @mouseenter="config.videoStart()" @mouseleave="config.videoEnd()">
@@ -77,7 +38,7 @@
 </template>
 
 <script setup>
-import { nextTick, reactive, ref } from 'vue'
+import { reactive, ref } from 'vue'
 
 const videoRef = ref(null)
 
@@ -86,7 +47,6 @@ const config = reactive({
   async videoStart() {
     config.videoShow = true
 
-    await nextTick()
     if (!videoRef.value) return
 
     try {

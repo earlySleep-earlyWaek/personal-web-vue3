@@ -23,13 +23,7 @@
   </div>
 </template>
 
-<script setup>
-import { onMounted, ref } from 'vue'
-
-const height = ref()
-
-onMounted(async () => {})
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 .main {
