@@ -21,12 +21,17 @@
           </el-form-item>
         </el-form>
 
-        <div class="w-300px text-end">
-          <el-button size="small" type="primary" @click="config.login()">登录</el-button>
+        <div class="w-300px flex justify-end">
+          <div class="w-220px flex justify-between">
+            <el-button size="small" type="success" @click="loginRef.open()">前往注册</el-button>
+            <el-button size="small" type="primary" @click="config.login()">登录</el-button>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <chart-login ref="loginRef" />
 </template>
 
 <script setup>
@@ -35,6 +40,10 @@ import { ChartIndex } from './config'
 import { reactive, ref } from 'vue'
 import { ChartUserApi } from '@/api/chatroom/user'
 import { ElMessage } from 'element-plus'
+import ChartLogin from './components/ChartLogin.vue'
+
+// ref
+const loginRef = ref(null)
 
 const router = useRouter()
 const params = ref({

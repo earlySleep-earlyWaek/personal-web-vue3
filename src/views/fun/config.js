@@ -16,13 +16,13 @@ export const FunConfig = {
     //   label: '早餐店模拟器',
     //   url: 'breakfast',
     // },
-    {
-      label: '组件大战DIV',
-      url: '#',
-    },
-    {
-      label: '打DIV(打地鼠)',
-      url: '#',
-    },
+    // {
+    //   label: '组件大战DIV',
+    //   url: '#',
+    // },
+    // {
+    //   label: '打DIV(打地鼠)',
+    //   url: '#',
+    // },
   ],
 }
