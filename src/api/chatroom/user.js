@@ -16,4 +16,5 @@ export const ChartUserApi = {
 
     return req
   },
+  async,
 }
