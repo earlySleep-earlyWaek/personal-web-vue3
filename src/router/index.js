@@ -1,3 +1,4 @@
+import { TestConfig } from '@/views/test/config'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -96,6 +97,7 @@ const router = createRouter({
           path: 'test',
           name: 'Test',
           component: () => import('@/views/test/index.vue'),
+          children: TestConfig.routers,
         },
         {
           path: 'config',

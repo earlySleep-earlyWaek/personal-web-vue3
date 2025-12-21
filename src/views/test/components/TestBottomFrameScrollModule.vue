@@ -28,23 +28,10 @@
   overflow: hidden;
   z-index: 1;
 
-  transition: all 0.3s ease;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 0%;
-    height: 100%;
-    background-color: #1677ff;
-    opacity: 0.2;
-    transition: width 0.3s ease;
-    z-index: -1;
-  }
+  transition: all 0.2s ease;
 
   &:hover {
-    background-color: #8dbfff;
+    background-color: #cccccc;
   }
 }
 </style>
