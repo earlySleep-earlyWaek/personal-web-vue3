@@ -1,10 +1,12 @@
 <!-- 测试页右边主要的底层框架 -->
 
 <template>
-  <div class="mainFrame"></div>
+  <div ref="routerRef" class="mainFrame"><slot></slot></div>
 </template>
 
 <script setup>
+
+
 defineProps({
   background: {
     type: String,
@@ -25,5 +27,7 @@ defineProps({
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+
+  position: relative;
 }
 </style>

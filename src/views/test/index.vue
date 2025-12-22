@@ -1,13 +1,13 @@
 <template>
   <div class="bottomFrame">
     <TestBottomFrameScrollModule />
-    <div class="flex-1 h-full">
+    <div ref="routerRef" class="flex-1 h-full">
       <router-view />
     </div>
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import TestBottomFrameScrollModule from './components/TestBottomFrameScrollModule.vue'
 </script>
 
