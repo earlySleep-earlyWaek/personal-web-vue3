@@ -38,32 +38,34 @@
 import { useRouter } from 'vue-router'
 import { ChartIndex } from './config'
 import { reactive, ref } from 'vue'
-import { ChartUserApi } from '@/api/chatroom/user'
+import { userApi } from '@/api/user'
 import { ElMessage } from 'element-plus'
 import ChartLogin from './components/ChartLogin.vue'
+import { useUserStore } from '@/stores/user'
 
 // ref
 const loginRef = ref(null)
 
 const router = useRouter()
 const params = ref({
-  account: 'admin',
-  password: 'admin123',
+  account: 'sssaaa',
+  password: 'sssaaa11',
 })
 
 const config = reactive({
   async login() {
-    if (params.value.account == 'admin' && params.value.password == 'admin123') {
+    const userStore = useUserStore()
+
+    console.log(userStore.userInfo?.username, userStore.userInfo?.nickname)
+
+    try {
+      // 使用 Pinia store 进行登录
+      await userStore.login(params.value.account, params.value.password)
+      ElMessage.success('登录成功👋')
       router.push('/home/chart-room/message')
-    } else {
-      await ChartUserApi.login(params.value)
-        .then((data) => {
-          ElMessage.success('你好👋')
-          router.push('/home/chart-room/message')
-        })
-        .catch((e) => {
-          console.log(e)
-        })
+    } catch (error) {
+      console.error('登录失败:', error)
+      ElMessage.error('登录失败，请检查账号密码')
     }
   },
 })

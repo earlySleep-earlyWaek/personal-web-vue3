@@ -45,79 +45,28 @@
 
     <template #footer>
       <div class="w-full text-end">
-        <el-button type="success" @click="handleSubmit">注册</el-button>
+        <el-button type="success" @click="handleSubmit" :loading="config.loading"> 注册 </el-button>
       </div>
     </template>
   </el-dialog>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ElMessage } from 'element-plus'
 import { reactive, ref, onMounted } from 'vue'
+import { userApi } from '@/api/user'
+import { useRouter } from 'vue-router'
+import {
+  generateVerifyCode,
+  createVerifyCodeImage,
+  validateVerifyCode,
+} from '@/utils/verifyCodeUtils'
+
+// 路由
+const router = useRouter()
 
 // Ref
 const formRef = ref(null)
-
-// 生成随机验证码（4位数字和字母组合）
-const generateVerifyCode = () => {
-  // 验证码字符集
-  const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-  let code = ''
-  // 生成4位验证码
-  for (let i = 0; i < 4; i++) {
-    code += chars.charAt(Math.floor(Math.random() * chars.length))
-  }
-  return code
-}
-
-// 生成验证码图片（使用canvas）
-const createVerifyCodeImage = (code) => {
-  const canvas = document.createElement('canvas')
-  canvas.width = 100
-  canvas.height = 40
-
-  const ctx = canvas.getContext('2d')
-  // 绘制背景
-  ctx.fillStyle = '#f5f5f5'
-  ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-  // 绘制干扰线
-  for (let i = 0; i < 5; i++) {
-    ctx.strokeStyle = `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`
-    ctx.beginPath()
-    ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height)
-    ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height)
-    ctx.stroke()
-  }
-
-  // 绘制验证码文字
-  ctx.font = 'bold 20px Arial'
-  ctx.textAlign = 'center'
-  ctx.textBaseline = 'middle'
-
-  // 每个字符随机颜色和位置
-  for (let i = 0; i < code.length; i++) {
-    ctx.fillStyle = `rgb(${Math.random() * 150 + 50},${Math.random() * 150 + 50},${Math.random() * 150 + 50})`
-    const x = (canvas.width / code.length) * (i + 0.5)
-    const y = canvas.height / 2 + (Math.random() * 10 - 5)
-    // 轻微旋转
-    ctx.save()
-    ctx.translate(x, y)
-    ctx.rotate(((Math.random() * 20 - 10) * Math.PI) / 180)
-    ctx.fillText(code[i], 0, 0)
-    ctx.restore()
-  }
-
-  // 绘制干扰点
-  for (let i = 0; i < 50; i++) {
-    ctx.fillStyle = `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`
-    ctx.beginPath()
-    ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, 1, 0, 2 * Math.PI)
-    ctx.fill()
-  }
-
-  return canvas.toDataURL('image/png')
-}
 
 // 当前验证码
 const currentVerifyCode = ref('')
@@ -131,17 +80,28 @@ const refreshVerifyCode = () => {
   verifyCodeImg.value = createVerifyCodeImage(code)
 }
 
-// 表单校验规则（完整优化版）
+// 配置对象
 const config = reactive({
   diaVisible: false,
+  loading: false, // 新增：加载状态
   rules: {
-    // 用户名：不能为空
     userName: [
       {
         required: true,
         message: '请输入昵称',
         trigger: 'blur',
         whitespace: true, // 禁止纯空格
+      },
+      {
+        min: 2,
+        max: 15,
+        message: '昵称长度必须为2-15位',
+        trigger: 'blur',
+      },
+      {
+        pattern: /^[^\s]+$/, // 不能包含空格
+        message: '昵称不能包含空格',
+        trigger: 'blur',
       },
     ],
     // 账号：5-16位，不能为空且长度符合要求
@@ -178,6 +138,11 @@ const config = reactive({
         message: '密码长度必须为6-16位',
         trigger: 'blur',
       },
+      {
+        pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{6,}$/, // 至少包含一个字母和一个数字
+        message: '密码至少包含一个字母和一个数字',
+        trigger: 'blur',
+      },
     ],
     // 重复密码：不能为空 + 与密码一致校验
     passwordAgain: [
@@ -212,8 +177,8 @@ const config = reactive({
         validator: (rule, value, callback) => {
           if (!value) return callback()
 
-          // 忽略大小写校验
-          if (value.toUpperCase() !== currentVerifyCode.value.toUpperCase()) {
+          // 使用工具函数验证验证码
+          if (!validateVerifyCode(value, currentVerifyCode.value)) {
             callback(new Error('验证码输入错误'))
           } else {
             callback()
@@ -229,27 +194,45 @@ const params = reactive({
   account: '',
   password: '',
   passwordAgain: '',
-  userName: '',
+  username: '',
   verifyCode: '', // 验证码字段
 })
 
-// 注册提交方法
-const handleSubmit = () => {
-  formRef.value.validate((valid) => {
-    if (valid) {
-      // 校验通过，执行注册逻辑
-      ElMessage.success('表单校验通过，提交数据')
-      // 这里可以写接口请求逻辑
-      console.log('提交的注册数据：', params)
+// 处理注册提交
+const handleSubmit = async () => {
+  // 验证所有字段
+  try {
+    await formRef.value.validate()
+  } catch (error) {
+    ElMessage.warning('表单校验失败，请检查输入内容')
+    return
+  }
 
-      // 提交成功后重置表单和验证码
-      formRef.value.resetFields()
-      refreshVerifyCode()
-    } else {
-      ElMessage.warning('表单校验失败，请检查输入内容')
-      return false
+  config.loading = true
+
+  try {
+    // 执行注册逻辑
+    const userData = {
+      username: params.account,
+      nickname: params.userName,
+      password: params.password,
     }
-  })
+
+    await userApi.createUser(userData)
+    ElMessage.success('注册成功！')
+
+    // 提交成功后重置表单和验证码
+    formRef.value.resetFields()
+    refreshVerifyCode()
+
+    // 关闭对话框
+    config.diaVisible = false
+  } catch (error) {
+    console.error('注册失败:', error)
+    ElMessage.error('注册失败，请稍后重试')
+  } finally {
+    config.loading = false
+  }
 }
 
 const open = () => {
