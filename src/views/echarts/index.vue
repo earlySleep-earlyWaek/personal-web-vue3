@@ -1,1 +1,1 @@
-<template>统计页</template>
+<template></template>
