@@ -29,3 +29,6 @@
 🕒视频详情页  
 <img width="1854" height="925" alt="a368cc85-efc2-4434-a7f7-5b85b48dfee6" src="https://github.com/user-attachments/assets/697d1674-45a7-49f9-945d-03f9ed3fcb4d" />
 
+# 即时聊天(开发中)
+<img width="1847" height="920" alt="image" src="https://github.com/user-attachments/assets/e99a30c5-a329-49ac-99d0-c1560c6224a0" />
+
