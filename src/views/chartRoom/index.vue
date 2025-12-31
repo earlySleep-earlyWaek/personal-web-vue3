@@ -17,7 +17,7 @@
             <el-input v-model="params.account" class="w-220px" />
           </el-form-item>
           <el-form-item prop="password" label="密码">
-            <el-input v-model="params.password" type="password" class="w-220px" />
+            <el-input v-model="params.password" type="password" class="w-220px" show-password />
           </el-form-item>
         </el-form>
 
@@ -48,8 +48,8 @@ const loginRef = ref(null)
 
 const router = useRouter()
 const params = ref({
-  account: 'sssaaa',
-  password: 'sssaaa11',
+  account: 'wang_who',
+  password: 'abc123',
 })
 
 const config = reactive({

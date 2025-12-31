@@ -142,7 +142,7 @@ service.interceptors.response.use(
     }
 
     // 错误提示
-    ElMessage.error(errorMsg)
+    // ElMessage.error(errorMsg)
     console.error('响应拦截器错误：', error)
     return Promise.reject(error)
   },

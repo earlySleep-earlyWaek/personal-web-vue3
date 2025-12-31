@@ -197,7 +197,6 @@ const params = reactive({
   username: '',
   verifyCode: '', // 验证码字段
 })
-
 // 处理注册提交
 const handleSubmit = async () => {
   // 验证所有字段
@@ -228,8 +227,15 @@ const handleSubmit = async () => {
     // 关闭对话框
     config.diaVisible = false
   } catch (error) {
-    console.error('注册失败:', error)
-    ElMessage.error('注册失败，请稍后重试')
+    // console.error('注册失败:', error)
+    // 根据错误信息显示相应的提示
+    if (error.response?.data?.message?.includes('账号已存在')) {
+      const username =
+        error.response.data.message.split(': ')[1]?.replace(')', '') || params.account
+      ElMessage.warning(`账号 ${username} 已存在，请更换账号名`)
+    } else {
+      ElMessage.error('注册失败，请稍后重试')
+    }
   } finally {
     config.loading = false
   }

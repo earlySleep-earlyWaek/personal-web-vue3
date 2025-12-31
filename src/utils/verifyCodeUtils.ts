@@ -9,7 +9,7 @@
  */
 export const generateVerifyCode = (length: number = 4): string => {
   // 验证码字符集
-  const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+  const chars = '23456789ABCEFGHMNPQRSTUVWXYZabcdefghmnpqrstuvwxyz'
   let code = ''
 
   // 生成指定长度的验证码
